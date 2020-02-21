@@ -1,0 +1,31 @@
+.card-new {
+    border-radius:5px;
+    overflow:hidden;
+}
+.new {
+    text-align: justify;
+    padding: 0 20px 10px 10px;
+    border-radius: 5px;
+}
+.newContainer {
+    transition: 300ms;
+}
+.newContainer:hover {
+    background-color: rgb(15, 10, 93);
+}
+
+.card-new img {
+    width:150px;
+    height:100px;
+}
+
+h1 {
+    color: white;
+
+}
+p {
+    color: white;
+}
+h5{
+    color: white;
+}

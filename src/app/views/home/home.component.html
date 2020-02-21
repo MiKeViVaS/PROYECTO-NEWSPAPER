@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class='row mx-0'>
+    <div class='col-12 px-0'>
+        <h1 class='text-center  font-weight-bold my-5' style="font-family:'Times New Roman', Times, serif; font-size:4em;">NeWSPaPeR</h1>
+    </div>
+</div>
+<div id='news' class='row mx-auto' style='max-width:1200px;' *ngIf='view === "news"'>
+
+    <div class='row' >
+        <div class='col-4  px-0' *ngFor='let news of data; let i = index'>
+            <div class="card-new mx-auto my-3 w-9 d-flex flex-row newContainer" (click)='viewNew(i)'>
+                <img src="{{ news.urlToImage }}">
+                <div class='new'>
+                    <h5 class="card-title">{{ news.author }}</h5>
+                    <p class="card-text">{{ news.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='row mx-auto mt-5' style='max-width:1200px;' *ngIf='view === "notFound"'>
+    <div class='col-12'>
+        <h3 class='text-center'>Sorry, not data found, this theme is not a topic.</h3>
+    </div>
+</div>

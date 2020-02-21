@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div class='container mt-5'>
+    <div class='row'>
+        <div class='col-12'>
+            <div *ngFor= "let article of new; let i = index" class="card mx-auto my-3 w-9"> 
+                <img src="{{new['articles'][i]['urlToImage']}}" class="card-img-top" style='width:100%; height:auto;'>
+                <div class="card-body">
+                    <h5 class="card-title">{{new['articles'][i]['author']}}</h5>
+                    <p class="card-text">{{new['articles'][i]['tittle']}}</p>
+                    <a href="{{new['articles'][i]['url']}}" noreferrer noopener target='_blank' class="btn btn-outline-dark">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

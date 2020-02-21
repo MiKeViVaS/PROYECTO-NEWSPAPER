@@ -1,0 +1,101 @@
+<nav class=" d-flex justify-content-between">
+    <div>
+        <a (click)='homeButton()'><i class="fas fa-home"></i></a>
+        <a data-toggle="modal" data-target="#searchOptionsModal">
+            <i class="fas fa-search"></i>
+        </a>
+        <div class="modal fade" id="searchOptionsModal" tabindex="-1" role="dialog" aria-labelledby="searchOptionsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="searchOptionsModalLabel">Search Options</h5>
+                    </div>
+                    <form (ngSubmit)='searchAdvanced(form)' #form='ngForm'>
+                        <div class="modal-body d-flex flex-row">
+                            <div class='aside pr-3'>
+                                <h5 class='mb-3'>Category</h5>
+                                <div class="form-check">
+                                    <input [(ngModel)]='formData["category"]' [checked]='formData["category"] === "general"' class="form-check-input" type="radio" name="options" id="general" value="general">
+                                    <label class="form-check-label" for="general">General</label>
+                                </div>
+                                <div class="form-check">   
+                                    <input [(ngModel)]='formData["category"]' class="form-check-input" type="radio" name="options" id="entertainment" value="entertainment">
+                                    <label class="form-check-label" for="entertainment">Entertainment</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]='formData["category"]' class="form-check-input" type="radio" name="options" id="health" value="health">
+                                    <label class="form-check-label" for="health">Health</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]='formData["category"]' class="form-check-input" type="radio" name="options" id="science" value="science">
+                                    <label class="form-check-label" for="science">Science</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]='formData["category"]' class="form-check-input" type="radio" name="options" id="sports" value="sports">
+                                    <label class="form-check-label" for="sports">Sports</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]='formData["category"]' class="form-check-input" type="radio" name="options" id="technology" value="technology">
+                                    <label class="form-check-label" for="technology">Technology</label>
+                                </div>
+                            </div>
+
+                            <div class='content pl-3 border-left'>
+                                <h5 class='mb-3'>Sort By</h5>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]='formData["top"]' [checked]='formData["top"] === "top-headlines"' class="form-check-input" type="radio" name="filter" id="headlines" value="top-headlines">
+                                        <label class="form-check-label" for="headlines">Top Headlines</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]='formData["top"]' class="form-check-input" type="radio" name="filter" id="everything" value="everything">
+                                        <label class="form-check-label" for="everything">Everything</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]='formData["sort"]' [checked]='formData["sort"] === "publishedAt"' class="form-check-input" type="radio" name="sortBy" id="publishedAt" value="publishedAt">
+                                        <label class="form-check-label" for="publishedAt">Date</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]='formData["sort"]' class="form-check-input" type="radio" name="sortBy" id="popularity" value="popularity">
+                                        <label class="form-check-label" for="popularity">Popularity</label>
+                                    </div>
+                                </div>
+                                <h5 class='mt-4 mb-3'>Country</h5>
+                                <select class="form-control"  [(ngModel)]='formData["country"]' name='country'>
+                                    <option value='us'>USA</option>
+                                    <option value='es'>Spain</option>
+                                    <option value='fr'>France</option>
+                                    <option value='it'>Italy</option>
+                                    <option value='gb'>Britain</option>
+                                    <option value='de'>Germany</option>
+                                </select>
+                                <h5 class='mt-4 mb-3'>Date</h5>
+                                <div>
+                                    <label for="from">From:</label>
+                                    <input [(ngModel)]='formData["dateFrom"]' type="date" name="from" id="from" class='form-control bordered'>
+                                    <label for="to">To:</label>
+                                    <input  [(ngModel)]='formData["dateTo"]'type="date" name="to" id="to" class='form-control bordered'>
+                                </div>
+                                <h5 class='mt-4 mb-3'>Search by term:</h5>
+                                <div>
+                                    <input [(ngModel)]='formData["termSearch"]' type='text' name="searchTerm" id="searchTerm" class='form-control'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-primary" onclick='$(".modal").modal("hide")'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <form (ngSubmit)='termSearch()' class="form-inline my-2 my-lg-0 formSearchNav">
+        <input [(ngModel)]='formData["searchInput"]' name='searchInput' class="form-control border-0" type="search" placeholder="Search" aria-label="Search" value='{{formData["searchInput"]}}'>
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+    </form>
+</nav>
